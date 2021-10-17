@@ -31,7 +31,7 @@ const initalTodos = [
 function todoReducer(state, action) {
   switch (action.type) {
     case 'CREATE':
-      return state.concat(action.todo);
+      return state.concat(action);
     case 'TOGGLE':
       return state.map((todo) =>
         todo.id === action.id ? { ...todo, done: !todo.done } : todo
@@ -70,7 +70,7 @@ export function useTodoState() {
   return context;
 }
 
-export function useDispatchState() {
+export function useTodoDispatch() {
   const context = useContext(TodoDispatchContext);
   if (!context) {
     throw new Error('Cannot find TodoProvider');
